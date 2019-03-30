@@ -1,5 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/BenSokol/EECS675-Project2.svg)
-# EECS675-Project1
+# EECS675-Project2
 
 ## Project Specification
 The project specification is located [here](https://web.archive.org/web/20190308173240/https://people.eecs.ku.edu/~jrmiller/Courses/675/Spring2019/Projects/Project2.html).
