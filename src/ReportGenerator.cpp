@@ -3,7 +3,7 @@
 * @Author:   Ben Sokol
 * @Email:    ben@bensokol.com
 * @Created:  March 8th, 2019 [11:24am]
-* @Modified: March 29th, 2019 [10:45pm]
+* @Modified: March 29th, 2019 [11:28pm]
 * @Version:  1.0.0
 *
 * Copyright (C) 2019 by Ben Sokol. All Rights Reserved.
@@ -33,9 +33,9 @@ void ReportGenerator::generate(size_t size, std::vector<double> totalSales, std:
 
   std::cout << "\n" << std::string((col1.size() + col2.size() + col3.size() + col4.size() + 13), '-');
   std::cout << "\n";
-  std::cout << "| " << UTL::COLOR::bold << col1 << UTL::COLOR::reset << " | " << UTL::COLOR::bold << col2
-            << UTL::COLOR::reset << " | " << UTL::COLOR::bold << col3 << UTL::COLOR::reset << " | " << UTL::COLOR::bold
-            << col4 << UTL::COLOR::reset << " |\n";
+  std::cout << "| " << UTL::COLOR::CODES::bold << col1 << UTL::COLOR::CODES::reset << " | " << UTL::COLOR::CODES::bold
+            << col2 << UTL::COLOR::CODES::reset << " | " << UTL::COLOR::CODES::bold << col3 << UTL::COLOR::CODES::reset
+            << " | " << UTL::COLOR::CODES::bold << col4 << UTL::COLOR::CODES::reset << " |\n";
   std::cout << std::string((col1.size() + col2.size() + col3.size() + col4.size() + 13), '-');
   std::cout << "\n";
   std::cout.precision(2);

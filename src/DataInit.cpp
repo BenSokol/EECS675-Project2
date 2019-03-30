@@ -3,7 +3,7 @@
 * @Author:   Ben Sokol
 * @Email:    ben@bensokol.com
 * @Created:  March 8th, 2019 [2:29pm]
-* @Modified: March 29th, 2019 [11:13pm]
+* @Modified: March 29th, 2019 [11:29pm]
 * @Version:  1.0.0
 *
 * Copyright (C) 2019 by Ben Sokol. All Rights Reserved.
@@ -27,8 +27,8 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
   std::ifstream fs;
   fs.open(mFileName);
   if (!fs.is_open()) {
-    std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset << ": Unable to open file '" << mFileName
-              << "'.\n"
+    std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset << ": Unable to open file '"
+              << mFileName << "'.\n"
               << usage << "\n";
     mIsValid = false;
     return;
@@ -41,7 +41,7 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
 
   // validate number of records is a number and is >= 0;
   if (!UTL::isNumber(tempNumRecords, 0)) {
-    std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset
+    std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset
               << ": Invalid number of records. Received: '" << tempNumRecords << "'\n"
               << usage << "\n";
     mIsValid = false;
@@ -50,7 +50,7 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
 
   // validate number of models is a number and is >= 0;
   if (!UTL::isNumber(tempNumModels)) {
-    std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset
+    std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset
               << ": Invalid number of models. Received: '" << tempNumModels << "'\n"
               << usage << "\n";
     mIsValid = false;
@@ -72,32 +72,32 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
     std::string purchaseAmountInDollarsStr = "";
 
     if (fs.eof()) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset << ": EOF reached before "
-                << mNumRecords << " have been read in from file.";
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
+                << ": EOF reached before " << mNumRecords << " have been read in from file.";
       break;
     }
     fs >> widgetModelNumberStr;
     if (fs.eof()) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset << ": EOF reached before "
-                << mNumRecords << " have been read in from file.";
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
+                << ": EOF reached before " << mNumRecords << " have been read in from file.";
       break;
     }
     fs >> dateOfPurchaseStr;
     if (fs.eof()) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset << ": EOF reached before "
-                << mNumRecords << " have been read in from file.";
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
+                << ": EOF reached before " << mNumRecords << " have been read in from file.";
       break;
     }
     fs >> customerTypeStr;
     if (fs.eof()) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset << ": EOF reached before "
-                << mNumRecords << " have been read in from file.";
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
+                << ": EOF reached before " << mNumRecords << " have been read in from file.";
       break;
     }
     fs >> purchaseAmountInDollarsStr;
 
     if (!UTL::isNumber(widgetModelNumberStr)) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
                 << ": Invalid widget model encountered while reading in from file. Received: '" << widgetModelNumberStr
                 << "'\n         Skipping entry {" << widgetModelNumberStr << " " << dateOfPurchaseStr << " "
                 << customerTypeStr << " " << purchaseAmountInDollarsStr
@@ -106,7 +106,7 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
       continue;
     }
     if (!UTL::isNumber(dateOfPurchaseStr)) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
                 << ": Invalid data of purchase encountered while reading in from file. Received: '" << dateOfPurchaseStr
                 << "'\n         Skipping entry {" << widgetModelNumberStr << " " << dateOfPurchaseStr << " "
                 << customerTypeStr << " " << purchaseAmountInDollarsStr
@@ -116,7 +116,7 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
     }
     if (customerTypeStr.length() != 1) {
       std::cout
-          << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset
+          << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
           << ": Invalid length of customer type. Received: '" << customerTypeStr << "'\n         Skipping entry {"
           << widgetModelNumberStr << " " << dateOfPurchaseStr << " " << customerTypeStr << " "
           << purchaseAmountInDollarsStr
@@ -125,7 +125,7 @@ DataInit::DataInit(std::string aFileName) : mIsValid(true), mFileName(aFileName)
       continue;
     }
     if (!UTL::isNumber(purchaseAmountInDollarsStr)) {
-      std::cout << UTL::COLOR::FG::BRIGHT::magenta << "WARNING" << UTL::COLOR::reset
+      std::cout << UTL::COLOR::CODES::fg_bright_magenta << "WARNING" << UTL::COLOR::CODES::reset
                 << ": Invalid purchase amount encountered while reading in from file. Received: '"
                 << purchaseAmountInDollarsStr << "'\n         Skipping entry {" << widgetModelNumberStr << " "
                 << dateOfPurchaseStr << " " << customerTypeStr << " " << purchaseAmountInDollarsStr

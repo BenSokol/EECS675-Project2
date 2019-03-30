@@ -3,7 +3,7 @@
 * @Author:   Ben Sokol
 * @Email:    ben@bensokol.com
 * @Created:  February 27th, 2019 [11:12am]
-* @Modified: March 29th, 2019 [10:53pm]
+* @Modified: March 29th, 2019 [11:29pm]
 * @Version:  1.0.0
 *
 * Copyright (C) 2019 by Ben Sokol. All Rights Reserved.
@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
   if (communicatorSize < 2) {
     if (rank == 0) {
-      std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset
+      std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset
                 << ": Requires a communicatorSize >= 2\nAborting...\n";
       MPI_Abort(MPI_COMM_WORLD, MPI_ERR_ARG);
     }
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
   std::string usage = "Usage: mpirun mpirun … reportGenerator <dataFileName> <reportYear> <customerType>";
   if (argc != 4) {
     if (rank == 0) {
-      std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset
+      std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset
                 << ": Invalid number of command line arguments.\n"
                 << usage << "\n";
       MPI_Abort(MPI_COMM_WORLD, MPI_ERR_ARG);
@@ -56,8 +56,8 @@ int main(int argc, char *argv[]) {
 
   if (reportYearStr.length() != 4 || !UTL::isNumber(reportYearStr)) {
     if (rank == 0) {
-      std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset << ": Invalid year. Received: '"
-                << reportYearStr << "'\n"
+      std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset
+                << ": Invalid year. Received: '" << reportYearStr << "'\n"
                 << usage << "\n";
       MPI_Abort(MPI_COMM_WORLD, MPI_ERR_ARG);
     }
@@ -67,8 +67,8 @@ int main(int argc, char *argv[]) {
   if ((customerTypeStr.length() != 1)
       || !(customerTypeStr[0] == 'G' || customerTypeStr[0] == 'I' || customerTypeStr[0] == 'R')) {
     if (rank == 0) {
-      std::cout << UTL::COLOR::FG::BRIGHT::red << "ERROR" << UTL::COLOR::reset << ": Invalid Customer Type. Received: '"
-                << customerTypeStr << "'. Expected 'G', 'I', or 'R'.\n"
+      std::cout << UTL::COLOR::CODES::fg_bright_red << "ERROR" << UTL::COLOR::CODES::reset
+                << ": Invalid Customer Type. Received: '" << customerTypeStr << "'. Expected 'G', 'I', or 'R'.\n"
                 << usage << "\n";
       MPI_Abort(MPI_COMM_WORLD, MPI_ERR_ARG);
     }
